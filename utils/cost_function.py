@@ -1,6 +1,5 @@
-import torch.nn as nn
 import numpy as np
-import torch.cuda.amp as amp
+import torch
 
 
 #################### Define get_neuron ########################
@@ -13,7 +12,7 @@ def get_neuron(template, latitudes, longitudes):
         idx_lons.append(np.where(template.longitude==lon)[0][0])
     return idx_lats, idx_lons
 #################### Define combinedModel #####################
-class combinedModel(nn.Module):
+class combinedModel(troch.nn.Module):
   def __init__(self, model, forecast_step, idx_vars, idx_lats, idx_lons, mean, sigma):
     super(combinedModel, self).__init__()
     self.model=model
@@ -24,7 +23,7 @@ class combinedModel(nn.Module):
     self.mean=mean
     self.sigma=sigma
   def forward(self, x):
-    with amp.autocast(True):
+    with torch.cuda.amp.autocast(True):
         x=(x-self.mean)/self.sigma
         for i in range(int(self.forecast_step)):
             x=self.model(x)

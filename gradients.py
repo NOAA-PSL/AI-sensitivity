@@ -28,7 +28,6 @@ from sfno.load_sfno import load_sfno
 from utils.cost_function import combinedModel, get_neuron
 from utils.sfno_utils import array_to_xarray, load_ic
 
-
 exec(open('sfno/sfnonet.py').read())
 
 
@@ -38,8 +37,6 @@ if len(sys.argv) > 1:
     workdir=sys.argv[1]
 else:
     workdir='./'
-
-workdir='/home/sfrolov/ai-adjoint/psl/work/'
 
 #################### Define setup parameters ##################
 modelName='sfno'
