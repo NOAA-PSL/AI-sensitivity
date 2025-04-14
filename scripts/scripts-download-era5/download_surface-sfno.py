@@ -39,8 +39,8 @@ dict_variab = {'10m_u_component_of_wind': 'uas',
                'mean_sea_level_pressure': 'mslp',
                'total_column_water_vapour': 'tcwv'}
 ####################################
-year=2010
-months=['02','03']
+year=2022
+months=['12']
 days=['01', '02', '03',
       '04', '05', '06',
       '07', '08', '09',
@@ -50,7 +50,7 @@ days=['01', '02', '03',
       '19', '20', '21',
       '22', '23', '24',
       '25', '26', '27',
-      '28']
+      '28', '29', '30', '31']
 ####################################
 c=cdsapi.Client()
 for var in vars:
