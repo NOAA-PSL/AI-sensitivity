@@ -12,7 +12,7 @@ def get_neuron(template, latitudes, longitudes):
         idx_lons.append(np.where(template.longitude==lon)[0][0])
     return idx_lats, idx_lons
 #################### Define combinedModel #####################
-class combinedModel(troch.nn.Module):
+class combinedModel(torch.nn.Module):
   def __init__(self, model, forecast_step, idx_vars, idx_lats, idx_lons, mean, sigma):
     super(combinedModel, self).__init__()
     self.model=model

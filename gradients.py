@@ -90,5 +90,5 @@ for lead_time in lead_times:
     # Build xarray object
     g=array_to_xarray(g, sfno_vars, data_ic[sfno_vars[0]].dims, data_ic)
     # Save the sensitivities
-    g.to_netcdf(workdir+'data/'+modelName+'/gradients/gradients-lt'+str(lead_time)+'.nc')
+    g.to_netcdf(workdir+'/data/'+modelName+'/gradients/gradients-lt'+str(lead_time)+'.nc')
 #############################################
