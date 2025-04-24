@@ -28,6 +28,11 @@ from sfno.load_sfno import load_sfno
 from utils.cost_function import combinedModel, get_neuron
 from utils.sfno_utils import array_to_xarray, load_ic
 
+import importlib
+import utils.cost_function as cf
+importlib.reload(cf)
+
+
 exec(open('sfno/sfnonet.py').read())
 
 
@@ -79,7 +84,8 @@ for lead_time in lead_times:
 
     # Define new model comprising >1 forecast step
     # Surface winds have indices [0,1] in the variable list
-    model=combinedModel(model_sfno, forecast_step=lead_time/6, idx_vars=[0,1], idx_lats=np.flip(idx_lats), idx_lons=idx_lons, mean=mean_arr, sigma=sigma_arr)
+    model=cf.combinedModel(model_sfno, forecast_step=lead_time/6, idx_lats=np.flip(idx_lats), idx_lons=idx_lons, 
+                        mean=mean_arr, sigma=sigma_arr, cf_type='ivt')
     # Set "evaluation" mode and send to device
     model=model.eval()
     model=model.to(device)
